@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邓皇的渔民们</title>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		a {
+			text-decoration: none;
+			outline: none;
+		}
+
+		ul,
+		li {
+			list-style: none;
+		}
+
+		input {
+			background-color: transparent;
+			outline: none;
+		}
+
+		html {
+			width: 100%;
+			font-family: 'SourceHanSansCN-Normal';
+			height: 100%;
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+		    font-family: 'SourceHanSansCN-Normal';
+		    background: rgb(255,255,255);
+		}
+		
+		canvas {
+			display: block;
+			position: relative;
+		}
+
+		em {
+			font-style: normal;
+		}
+
+		i {
+			font-style: normal;
+		}
+
+		#clear{
+			clear: both;
+			display: block;
+			content: "";
+			height: 0;
+		}
+		.content {
+		    width: 1200px;
+		    margin: 0 auto;
+		    padding: 25px 0;
+		}
+
+		.head-bottom {
+		    display: flex;
+		    align-items: center;
+		    width: 1200px;
+		    margin: 0 auto;
+		}
+		
+		.head-top {
+			border-bottom: 2px solid #00A4FF;
+			height: 22px;
+			line-height: 22px;
+			width: 1200px;
+		    margin: 0 auto;
+		}	
+
+		.header-info {
+			float: right;
+		}
+
+		.header-info .last{
+			margin-right: 40px;
+			color: rgb(0, 0, 0);
+			
+		}
+
+		.header-info li {
+			float: left;
+			margin-right: 5px;			
+			margin-bottom: 10px;
+		}
+
+		.head img {
+			height: 120px;
+			width: 190px;
+		} 
+		.meau {
+		    
+		    margin-right: 187px;
+		} 
+
+		.meau li:nth-child(1) {
+		    border-bottom: 2px solid #00A4FF;
+		}
+
+		.meau li {
+		    display: inline-block;
+		    padding: 10px 8px;
+		    margin-right: 19px;
+		}
+
+		.geren {
+		    position: relative;
+		}
+
+		.sousuo {
+		    position: absolute;
+		    display: inline-block;
+		    height: 40px;
+		    width: 40px;
+		    line-height: 40px;
+		    text-align: center;
+		    background: #00A4FF;
+		    left: 369px;
+		}
+
+		.sousuo img {
+		    height: 19px;
+		    width: 19px;
+		    margin-top: 10px;
+		    cursor: pointer;
+		}
+
+		.geren>input {
+		    width: 410px;
+		    height: 40px;
+		    line-height: 40px;
+		    box-sizing: border-box;
+		    padding-left: 20px;
+		    font-size: 14px;
+		    border: 1px solid #00A4FF;
+		}
+		
+		.wenzizx {
+		    font-size:14px;
+		    font-family:Microsoft YaHei;
+		    font-weight:400;
+		    color:rgba(102,102,102,1);
+		    margin-left: 15px;
+		}
+
+		.banner {
+		    width: 100%;
+		    background: #00A4FF;
+		    margin-bottom: 8px;
+		}
+
+		.banner_div {
+		    width: 1200px;
+		    margin: 0 auto;
+		    display: flex;
+		}
+
+		.banner_meau {
+		    font-size:14px;
+		    font-family:Microsoft YaHei;
+		    font-weight:400;
+		    line-height:44px;
+		    width:190px;
+		    background:rgba(0,0,0,0.3);
+		}
+
+		.banner_meau li {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    box-sizing: border-box;
+		    padding: 0 20px;
+		    color: #fff;
+		}
+
+		.banner_meau li:nth-child(1) {
+		    color: #00A4FF;
+		}
+
+		.banner_meau li  img {
+		    width:5px;
+		    height:9px;
+		}
+
+		.lunbo {
+		    width: 1040px;
+		}
+
+		.lunbo img {
+		    width: 100%;
+		    height: 100%;
+		}
+
+		.jptj {
+		    width: 1200px;
+		    margin: 0 auto;
+		    height:60px;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    box-sizing: border-box;
+		    padding: 0 60px 0 0;
+		    background: #fff;
+		    margin-bottom: 35px;
+		}
+
+		.jptj ul {
+		    display: flex;
+		}
+
+		.jptj ul li {
+		    padding: 0 35px;
+		    box-sizing: border-box;
+		    border-left: 1px solid #BFBFBF;
+		}
+
+		.jptj ul li:nth-child(1) {
+		    border: none;
+		    color: #00A4FF;
+		}
+
+		.jptj span {
+		    color: #00A4FF;
+		}
+
+		.tuijan {
+		    width: 1200px;
+		    margin: 0 auto;
+		}
+
+		.title {
+		    font-size:20px;
+		    font-family:Microsoft YaHei;
+		    font-weight:400;
+		    color:rgba(73,73,73,1);
+		    margin-bottom: 18px;
+		}
+
+		.all_tj {
+		    width: 100%;
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: space-between;
+		}
+
+		.each_th {
+		    width: 228px;
+		    background: #fff;
+		    padding-bottom: 25px;
+		    margin-bottom: 15px;
+		}
+
+		.each_th img {
+		    width: 100%;
+		    margin-bottom: 20px;
+		    height: 150px;
+		}
+
+		.each_th p:nth-child(2) {
+		    box-sizing: border-box;
+		    padding: 0 20px;
+		    font-size: 14px;
+		    margin-bottom: 15px;
+		}
+
+		.each_th p:nth-child(3) {
+		    box-sizing: border-box;
+		    padding: 0 20px;
+		    font-size: 12px;
+		    color: #606060;
+		}
+
+		.each_th p:nth-child(3) i {
+		    font-size: 12px;
+		    color: #FF7C2D;
+
+		}
+
+		.qianduan {
+		    display: flex;
+		    justify-content: space-between;
+		    box-sizing: border-box;
+		    padding-right: 30px;
+		    margin-bottom: 20px;
+		}
+
+		.qianduan ul li {
+		    display: inline-block;
+		    padding: 0 40px;
+		    color: #868686;
+		}
+
+		.qianduan ul li:nth-child(1) {
+		    color: #00A4FF;
+		}
+
+		.more {
+		    color: #A5A5A5;
+		    font-size: 12px;
+		}
+
+		.qianduan_div {
+		    width: 1200px;
+		    margin: 0 auto;
+		}
+
+		.daniu {
+		    width: 1200px;
+		    margin: 0 auto;
+		}
+
+		.laoshi {
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: space-between;
+		    
+		}
+		.laoshi .change {
+			width: 295px;
+			height: 295px;
+			margin-right: 2px;
+		}
+
+		.floot {
+		    width: 100%;
+		    background: #fff;
+		}
+
+		.bottom {
+		    width: 1200px;
+		    padding-top: 60px;
+		    padding-bottom: 140px;
+		    margin: 0 auto;
+		    margin-top: 73px;
+		    display: flex;
+		    flex-wrap: wrap;
+		    justify-content: space-between;
+		    box-sizing: border-box;
+		    padding-right: 28px;
+		}
+
+		.bottom_logo {
+		    padding-left: 20px;
+		    margin-right: 200px;
+		}
+
+		.bottom_logo li:nth-child(1) {
+		    font-size:36px;
+		    font-family:Microsoft YaHei;
+		    font-weight:bold;
+		    color:rgba(0,164,255,1);
+		    line-height:42px;
+		}
+
+		.bottom_logo li:nth-child(2) {
+		    font-size:12px;
+		    font-family:SimSun;
+		    font-weight:400;
+		    color:rgba(102,102,102,1);
+		    line-height:36px;
+		    margin-top: 35px;
+		}
+
+		.bottom_logo li:nth-child(3) {
+		    font-size:16px;
+		    font-family:Microsoft YaHei;
+		    font-weight:400;
+		    color:rgba(0,164,255,1);
+		    line-height:36px;
+
+		}
+
+		.bottom_logo li:nth-child(3) i {
+		    border: 1px solid #00A4FF;
+		    display: inline-block;
+		    width: 120px;
+		    text-align: center;
+		    height: 36px;
+		    margin-top: 35px;
+		}
+
+		.about {
+		    font-family:SimSun;
+		    color:rgba(51,51,51,1);
+		}
+
+		.about li {
+		    font-size:12px;
+		    font-family:SimSun;
+		    font-weight:400;
+		    color:rgba(51,51,51,1);
+		    line-height:21px;
+		}
+
+		.about li:nth-child(1) {
+		    font-size:16px;
+		    font-family:Microsoft YaHei;
+		    font-weight:400;
+		    color:rgba(51,51,51,1);
+		    line-height:21px;
+		    margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+        <div class="head">
+        	<div class="head-top" id="lear">
+        		<ul class="header-info" id="clear">
+        			<li><a href="#" class="last">登录/注册</a></li>
+        			<li><a href="#" class="last">移动客户端</a></li>
+        			<li><a href="#" style="color:black;">微信</a></li>
+        		</ul>
+        	</div>
+        	<div class="head-bottom">
+            	<img src="img/logo.jpg" alt="">
+            	<ul class="meau">
+                	<li><a href="#" style="color:#050505;">歌手简介</a></li>
+                	<li><a href="#" style="color:#050505;">渔民互动</a></li>
+                	<li><a href="#" style="color:#050505;">粉丝福利</a></li>
+                	<li><a href="#" style="color:#050505;">宣传活动</a></li>
+            	</ul>
+            	<div class="geren">
+                	<input type="text" placeholder="Come on">
+                	<span class="sousuo"><img src="img/fa-search.png" alt=""></span>
+            	</div>
+            </div>	
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner_div">
+            <ul class="banner_meau">       
+                <li>《摩天动物园》<img src="雪梨/img/enter_b.png" alt=""></li>
+                <li>《平凡天使》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《差不多姑娘》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《睡皇后》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《回忆的沙漏》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《毒苹果》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《岩石里的花》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《另一个童话》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《新的心跳》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《光年之外》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《爱如意》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《心之焰》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《桃花诺》<img src="雪梨/img/enter.png" alt=""></li>
+                <li>《画》<img src="雪梨/img/enter.png" alt=""></li>
+            </ul>
+            <div class="lunbo">
+                <img src="img/banner.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="jptj">
+        <ul>   
+            <li>精品周边</li>
+            <li>G.E.M 短袖</li>
+            <li>G.E.M 短裤</li>
+            <li>G.E.M 外套</li>
+            <li>G.E.M 鞋子</li>
+            <li>G.E.M 抱枕</li>
+            <li>G.E.M 书包</li>
+        </ul>
+        <span>修改兴趣</span>
+    </div>
+    <div class="tuijan">
+        <div class="qianduan">
+            <span>精品演唱会</span>
+            <span class="more">查看全部</span>
+        </div>
+        <div class="all_tj">
+            <div class="each_th">
+                <img src="img/first.jpg" alt="">
+                <p>   《新的心跳》北京站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/second.jpg" alt="">
+                <p>   《新的心跳》上海站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/third.jpg" alt="">
+                <p>   《新的心跳》广州站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/forth.jpg" alt="">
+                <p>   《新的心跳》杭州站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/fifth.jpg" alt="">
+                <p>   《新的心跳》深圳站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/seventh.jpg" alt="">
+                <p>Queen of Hearts 巡回演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/sixth.jpg" alt="">
+                <p>GetEverybodyMoving演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/first.jpeg" alt="">
+                <p> X.X.X.Live 世界巡回演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/eighth.jpg" alt="">
+                <p> Live in Macau 澳门站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/ninth.png" alt="">
+                <p> 18 LIVE 18岁 香港站演唱会</p>
+                <p>
+                    <i>打破歌手世界纪录</i>&ensp;<em style="font-weight:bold">·</em>&ensp;5000人观看
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="qianduan_div">
+        <div class="qianduan">
+            <span> G.E.M 代言</span>
+            <ul>   
+                <li>热门</li>
+                <li>第一名</li>
+                <li>第二名</li>
+                <li>第三名</li>
+            </ul>
+            <span class="more">查看全部</span>
+        </div>
+        <div class="all_tj">
+            <div class="each_th">
+                <img src="img/sixteenth.jpg" alt="">
+                <p>2017年游戏《穿越火线》代言</br>&emsp;</p>
+                <p>
+                    <i>爆款热门代言</i>&ensp;<em style="font-weight:bold">·</em>&ensp;100万人已观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/seventeenth.jpg" alt="">
+                <p>2019年PEPSI百事可乐代言</br>&emsp;</p>
+                <p>
+                    <i>爆款热门代言</i>&ensp;<em style="font-weight:bold">·</em>&ensp;100万人已观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/first.png" alt="">
+                <p>2016年美国德芙纵享丝滑巧克力代言</p>
+                <p>
+                    <i>爆款热门代言</i>&ensp;<em style="font-weight:bold">·</em>&ensp;100万人已观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/eighteenth.jpg" alt="">
+                <p>2014年美宝莲气垫CC霜代言</br>&emsp;</p>
+                <p>
+                    <i>爆款热门代言</i>&ensp;<em style="font-weight:bold">·</em>&ensp;100万人已观看
+                </p>
+            </div>
+            <div class="each_th">
+                <img src="img/nineteenth.jpg" alt="">
+                <p>2020年美国多芬洗发水沐浴露代言</p>
+                <p>
+                    <i>爆款热门代言</i>&ensp;<em style="font-weight:bold">·</em>&ensp;100万人已观看
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="daniu">
+        <p class="title">专辑推荐</p>
+        <div class="laoshi">
+            <div>
+                <img src="img/tenth.jpg" class="change" alt="">
+            </div>
+            <div>
+                <img src="img/eleventh.jpg" class="change" alt="">
+            </div>
+            <div>
+                <img src="img/twelve.jpg" class="change" alt="">
+            </div>
+            <div>
+                <img src="img/thirteen.jpg" class="change" alt="">
+            </div>
+            
+        </div>
+    </div>
+    <div class="floot">
+        <div class="bottom">
+            <ul class="bottom_logo">
+                <li>G.E.M</li>
+                <li>致力于为蟹蟹提供最大粉丝后援站,方便渔民们随时交流。</li>
+                <li><i>下载APP</i></li>
+            </ul>
+            <ul class="about">
+                <li>关于G.E.M</li>    
+                <li>关于</li>
+                <li>后援团队</li>
+                <li>见面机会</li>
+                <li>售后服务</li>
+                <li>帮助</li>
+            </ul>
+            <ul class="about">    
+                <li>新手指南</li>    
+                <li>如何成为蟹蟹的粉丝</li>
+                <li>如何加入粉丝群</li>
+                <li>加群未通过怎么办</li>
+                <li>怎么加入我们</li> 
+            </ul>
+            <ul class="about">
+                <li>版权</li>     
+                <li>渔民们所有</li>     
+                <li>冀ICP备12011972号-99</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
